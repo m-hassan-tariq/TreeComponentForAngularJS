@@ -1,0 +1,42 @@
+﻿<link href="Content/bootstrap.css" rel="stylesheet" />
+<script src="Content/angular.js"></script>
+<script src="appController.js"></script>
+<style>
+	li {
+		margin-left: 20px;
+	}
+</style>
+
+<html>
+	<body ng-app="sampleApp" class="ng-cloak">
+		<div ng-controller="HomeController as vm">
+			<script type="text/ng-template" id="tree_item_renderer.html">
+				<div>
+					<input type="button" ng-click="vm.AddSibling(item)" value="Sibling" />
+			 
+					<input type="button" ng-click="vm.AddChild(item)" value="Child" />
+			 
+					<input type="button" ng-click="vm.Delete(item)" value="Delete" />
+			 
+					<input type="text" ng-model="item.task" />
+					<ul>
+						<li ng-repeat="item in item.nodes" ng-include="'tree_item_renderer.html'"></li>
+					</ul>
+				</div>
+			</script>
+			<div ng-cloak>
+				<br />
+				<div>
+					<ul>
+						<li ng-repeat="item in vm.detailList" ng-include="'tree_item_renderer.html'"></li>
+					</ul>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="container">
+					<span class="pull-right text-info credit"> Muhammad Hassan - <a href="https://hassantariqblog.wordpress.com" target="_blank">Website</a></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
